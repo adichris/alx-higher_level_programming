@@ -1,3 +1,5 @@
 #!/usr/bin/python3
-print("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" %
-      ('a','b','c','d','f','g','h','i','j','k','l','m','n','o','p','r','s','t','u','v','w','x','y','z'))
+for a in list('abcdefghijklmnopqrstuvwxyz'):
+    if a == 'q' or a == 'e':
+        continue
+    print('{a}'.format(a=a), end="")
