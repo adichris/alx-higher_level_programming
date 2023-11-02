@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-print('abcdefghijklmnopqrstuvwxyz')
+for a in list('abcdefghijklmnopqrstuvwxyz'):
+    print(a, sep=" ", end="")
