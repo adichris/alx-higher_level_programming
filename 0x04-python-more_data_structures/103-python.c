@@ -1,43 +1,40 @@
 #include <Python.h>
+#include <stdio.h>
 
 void print_python_list(PyObject *p)
 {
-	int size, i;
-	PyObject *item;
-
-	size = PyList_Size(p);
+	Py_ssize_t size = PyList_Size(p);
 
 	printf("[*] Python list info\n");
-	printf("[*] Size of the Python List = %d\n", size);
+	printf("[*] Size of the Python List = %ld\n", size);
 	printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
 
-	for (i = 0; i < size; i++)
+	for (int i = 0; i < size && i < 5; i++)
 	{
-		item = PyList_GetItem(p, i);
+		PyObject *item = PyList_GetItem(p, i);
 		printf("Element %d: %s\n", i, Py_TYPE(item)->tp_name);
 	}
 }
 
 void print_python_bytes(PyObject *p)
 {
-	int size, i;
-	char *str;
-
-	printf("[.] bytes object info\n");
 	if (!PyBytes_Check(p))
 	{
-		printf("  [ERROR] Invalid Bytes Object\n");
+		printf("[ERROR] Invalid Bytes Object\n");
 		return;
 	}
 
-	size = PyBytes_Size(p);
-	str = PyBytes_AsString(p);
+	Py_ssize_t size = PyBytes_Size(p);
 
-	printf("  size: %d\n", size);
-	printf("  trying string: %s\n", str ? str : "");
+	printf("[*] Python bytes info\n");
+	printf("[*] Size = %ld\n", size);
+	printf("[*] Trying string: %s\n", PyBytes_AsString(p));
+	printf("First 10 bytes: ");
 
-	printf("  hex: ");
-	for (i = 0; i < size; i++)
-		printf("%02x ", (unsigned char)str[i]);
+	for (int i = 0; i < 10 && i < size; i++)
+	{
+		printf("%02x ", PyBytes_AS_STRING(p)[i]);
+	}
+
 	printf("\n");
 }
