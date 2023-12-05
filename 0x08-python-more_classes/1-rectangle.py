@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 class Rectangle:
+    """
+    Rectangle that defines a rectangle
+    Params: width, height
+    """
 
     def __init__(self, width=0, height=0):
         self.__height = height
