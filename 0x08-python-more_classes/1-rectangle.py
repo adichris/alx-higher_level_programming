@@ -3,9 +3,25 @@ class Rectangle:
     """
     Rectangle that defines a rectangle
     Params: width, height
+    ...
+
+    Attributes
+    ---------
+    height : int
+        height of the rectangle
+    width: int
+        width of the rectangle
     """
 
     def __init__(self, width=0, height=0):
+        """
+        Parameters
+        ----------
+        width: int
+            must be >= 0
+        height: int
+            must be >=0
+        """
         self.__height = height
         self.__width = width
     
