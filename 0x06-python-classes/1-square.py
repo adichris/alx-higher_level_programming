@@ -1,8 +1,13 @@
 #!/usr/bin/python3
+"""Square module."""
+
 
 class Square:
-    """ a class that defines private instance variables"""
-    _Square__size = None
+    """Defines a square."""
 
     def __init__(self, size):
-        self._Square__size = size
+        """Constructor.
+        Args:
+            size: length of side of the square.
+        """
+        self.__size = size
