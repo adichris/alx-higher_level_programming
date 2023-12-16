@@ -31,7 +31,7 @@ class Square:
     def position(self, value=(0, 0)):
         """Setter for the square's position"""
         if (not all(type(x) is int and x >= 0 for x in value) or
-                len(value) is not 2 or type(value) is not tuple):
+                len(value) != 2 or type(value) is not tuple):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
@@ -53,12 +53,12 @@ class Square:
         """Returns string version of the square"""
         out = ""
         if (self.__size == 0):
-            return out
+            return "$"
 
         for x in range(self.position[1]):
             out += "\n"
         for x in range(self.size):
             out += "_" * self.position[0] + "#" * self.size +\
-                ("\n" if x is not self.size - 1 else "")
+                ("$\n" if x is not self.size - 1 else "")
 
-        return out
+        return out + "$"
